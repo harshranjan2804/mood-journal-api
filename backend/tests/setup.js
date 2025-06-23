@@ -13,3 +13,6 @@ afterAll(async () => {
 afterEach(async () => {
   await dbHandler.clearDatabase();
 });
+
+// Silence console.error in tests
+jest.spyOn(console, 'error').mockImplementation(() => {});

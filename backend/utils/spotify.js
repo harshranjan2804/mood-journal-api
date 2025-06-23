@@ -47,15 +47,12 @@ const getMoodRecommendations = async (mood, token) => {
       preview: track.preview_url || null
     }));
   } catch (error) {
-    console.error("Spotify Recommendation Error:", {
-      status: error.response?.status,
-      data: error.response?.data,
+    console.error("Spotify API Error Details:", {
       message: error.message,
-      mood: mood,
-      token: token ? "Exists" : "Missing"
+      stack: error.stack,
+      response: error.response?.data,
     });
 
-    // Improved branch coverage with specific error handling
     if (error.response?.status === 401) {
       throw new Error("Spotify token expired");
     } else if (error.response?.status === 429) {
