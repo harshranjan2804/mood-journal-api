@@ -4,9 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev" :"nodemon app.js"
-
+    "test": "cross-env NODE_ENV=test jest --detectOpenHandles",
+    "test:unit": "jest tests/unit",
+    "test:integration": "jest tests/integration",
+    "test:api": "jest tests/api",
+    "test:coverage": "jest --coverage",
+    "dev": "nodemon server.js"
   },
   "keywords": [],
   "author": "",
@@ -17,5 +20,11 @@
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
     "mongoose": "^8.16.0"
+  },
+  "devDependencies": {
+    "import-local": "^3.2.0",
+    "jest": "^30.0.2",
+    "mongodb-memory-server": "^10.1.4",
+    "supertest": "^7.1.1"
   }
 }
