@@ -1,0 +1,378 @@
+openapi: 3.0.0
+info:
+  title: mood-journal-api
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+paths:
+  /api/moods:
+    post:
+      tags:
+        - default
+      summary: add-mood
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                mood: happy
+                note: Had a great day!
+      responses:
+        '201':
+          description: Created
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '117'
+            ETag:
+              schema:
+                type: string
+                example: W/"75-PPFO4zsvsxNf6eleFHI4QFS0GE4"
+            Date:
+              schema:
+                type: string
+                example: Fri, 20 Jun 2025 13:41:34 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                mood: happy
+                note: Had a great day!
+                _id: 6855650e3cc454400a2fbd20
+                date: '2025-06-20T13:41:34.270Z'
+                __v: 0
+    get:
+      tags:
+        - default
+      summary: get-mood
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '696'
+            ETag:
+              schema:
+                type: string
+                example: W/"2b8-TZqGjL9nO0RFp/qRni4HIDeYoyQ"
+            Date:
+              schema:
+                type: string
+                example: Fri, 20 Jun 2025 13:47:04 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                - _id: 685566303cc454400a2fbd2a
+                  mood: angry
+                  note: disgusted
+                  date: '2025-06-20T13:46:24.938Z'
+                  __v: 0
+                - _id: 685566103cc454400a2fbd26
+                  mood: neutral
+                  note: feeling normal
+                  date: '2025-06-20T13:45:52.796Z'
+                  __v: 0
+                - _id: 685565e03cc454400a2fbd22
+                  mood: excited
+                  note: adrenaline rush
+                  date: '2025-06-20T13:45:04.107Z'
+                  __v: 0
+                - _id: 6855650e3cc454400a2fbd20
+                  mood: happy
+                  note: Had a great day!
+                  date: '2025-06-20T13:41:34.270Z'
+                  __v: 0
+                - _id: 6855631e3cc454400a2fbd1c
+                  mood: sad
+                  note: feeling low
+                  date: '2025-06-20T13:33:18.516Z'
+                  __v: 0
+                - _id: 68551683b036ef06b6616c77
+                  mood: happy
+                  note: Had a great day!
+                  date: '2025-06-20T08:06:27.896Z'
+                  __v: 0
+  /api/moods/stats:
+    get:
+      tags:
+        - default
+      summary: get-mood-stats
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '167'
+            ETag:
+              schema:
+                type: string
+                example: W/"a7-hc3Yzriqn/qLG/QOJygxKZlzo2M"
+            Date:
+              schema:
+                type: string
+                example: Fri, 20 Jun 2025 13:48:33 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                stats:
+                  - _id: happy
+                    count: 2
+                  - _id: excited
+                    count: 1
+                  - _id: sad
+                    count: 1
+                  - _id: neutral
+                    count: 1
+                  - _id: angry
+                    count: 1
+                total: 6
+                average: 1.2
+  /api/moods/6855631e3cc454400a2fbd1c/music:
+    get:
+      tags:
+        - default
+      summary: get-music
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '867'
+            ETag:
+              schema:
+                type: string
+                example: W/"363-aZxMrB8TYkKm6+7xaEraM/D+b90"
+            Date:
+              schema:
+                type: string
+                example: Fri, 20 Jun 2025 13:51:32 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                mood: sad
+                recommendations:
+                  - name: Zakhm Dete Ho Kehte Ho Seete Raho
+                    artist: Mahbub Islam
+                    url: https://open.spotify.com/track/5bPTCA9whXbOqIhgf4gFcD
+                    image: >-
+                      https://i.scdn.co/image/ab67616d0000b273d17800968473b37372d9adea
+                    preview: null
+                  - name: Sad Kids
+                    artist: Munn
+                    url: https://open.spotify.com/track/2g65wdbwr7cgdRuOLJlrE3
+                    image: >-
+                      https://i.scdn.co/image/ab67616d0000b273995233cb8863483edf49c3e7
+                    preview: null
+                  - name: Perfect - Acoustic
+                    artist: Ed Sheeran
+                    url: https://open.spotify.com/track/5T6bJp3XgwT0IaCfKMxmAu
+                    image: >-
+                      https://i.scdn.co/image/ab67616d0000b273a629dbc92d4dcb0312b45fa2
+                    preview: null
+                  - name: Dooriyaan - Acoustic
+                    artist: Aniket Raturi, KALAM INK
+                    url: https://open.spotify.com/track/0QU0zu74bobCpmlUkT42vn
+                    image: >-
+                      https://i.scdn.co/image/ab67616d0000b2733dc7f35c59a082fdf29800de
+                    preview: null
+  /api/moods/6855650e3cc454400a2fbd20:
+    delete:
+      tags:
+        - default
+      summary: delete-mood
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '32'
+            ETag:
+              schema:
+                type: string
+                example: W/"20-CgsuMTG0VOjZM+gSoDyEp25ZYuY"
+            Date:
+              schema:
+                type: string
+                example: Fri, 20 Jun 2025 13:53:58 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                message: Mood entry deleted
+  /api/moods/685565e03cc454400a2fbd22:
+    put:
+      tags:
+        - default
+      summary: update-past-mood
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                mood: excited
+                note: Updated note goes here!
+      responses:
+        '200':
+          description: OK
+          headers:
+            X-Powered-By:
+              schema:
+                type: string
+                example: Express
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '126'
+            ETag:
+              schema:
+                type: string
+                example: W/"7e-vJ5LV3B4PcGBCdquc8Ohm2htghU"
+            Date:
+              schema:
+                type: string
+                example: Fri, 20 Jun 2025 13:58:39 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                _id: 685565e03cc454400a2fbd22
+                mood: excited
+                note: Updated note goes here!
+                date: '2025-06-20T13:45:04.107Z'
+                __v: 0
