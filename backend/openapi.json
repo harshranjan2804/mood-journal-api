@@ -1,0 +1,571 @@
+{
+	"info": {
+		"_postman_id": "51d2e2ea-7bbc-4f30-ae5c-a10a05fbe024",
+		"name": "mood-journal-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "44748007"
+	},
+	"item": [
+		{
+			"name": "add-mood",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"mood\": \"happy\",\r\n  \"note\": \"Had a great day!\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/moods",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"moods"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "example-add-mood",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"mood\": \"happy\",\r\n  \"note\": \"Had a great day!\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/moods",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"moods"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "117"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"75-PPFO4zsvsxNf6eleFHI4QFS0GE4\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 20 Jun 2025 13:41:34 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"mood\": \"happy\",\n    \"note\": \"Had a great day!\",\n    \"_id\": \"6855650e3cc454400a2fbd20\",\n    \"date\": \"2025-06-20T13:41:34.270Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "get-mood",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/moods",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"moods"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "example-get-mood",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/moods",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"moods"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "696"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"2b8-TZqGjL9nO0RFp/qRni4HIDeYoyQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 20 Jun 2025 13:47:04 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"_id\": \"685566303cc454400a2fbd2a\",\n        \"mood\": \"angry\",\n        \"note\": \"disgusted\",\n        \"date\": \"2025-06-20T13:46:24.938Z\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"685566103cc454400a2fbd26\",\n        \"mood\": \"neutral\",\n        \"note\": \"feeling normal\",\n        \"date\": \"2025-06-20T13:45:52.796Z\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"685565e03cc454400a2fbd22\",\n        \"mood\": \"excited\",\n        \"note\": \"adrenaline rush\",\n        \"date\": \"2025-06-20T13:45:04.107Z\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"6855650e3cc454400a2fbd20\",\n        \"mood\": \"happy\",\n        \"note\": \"Had a great day!\",\n        \"date\": \"2025-06-20T13:41:34.270Z\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"6855631e3cc454400a2fbd1c\",\n        \"mood\": \"sad\",\n        \"note\": \"feeling low\",\n        \"date\": \"2025-06-20T13:33:18.516Z\",\n        \"__v\": 0\n    },\n    {\n        \"_id\": \"68551683b036ef06b6616c77\",\n        \"mood\": \"happy\",\n        \"note\": \"Had a great day!\",\n        \"date\": \"2025-06-20T08:06:27.896Z\",\n        \"__v\": 0\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "get-mood-stats",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/moods/stats",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"moods",
+						"stats"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "example-mood-stats",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/moods/stats",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"moods",
+								"stats"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "167"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"a7-hc3Yzriqn/qLG/QOJygxKZlzo2M\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 20 Jun 2025 13:48:33 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"stats\": [\n        {\n            \"_id\": \"happy\",\n            \"count\": 2\n        },\n        {\n            \"_id\": \"excited\",\n            \"count\": 1\n        },\n        {\n            \"_id\": \"sad\",\n            \"count\": 1\n        },\n        {\n            \"_id\": \"neutral\",\n            \"count\": 1\n        },\n        {\n            \"_id\": \"angry\",\n            \"count\": 1\n        }\n    ],\n    \"total\": 6,\n    \"average\": 1.2\n}"
+				}
+			]
+		},
+		{
+			"name": "get-music",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/moods/6855631e3cc454400a2fbd1c/music",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"moods",
+						"6855631e3cc454400a2fbd1c",
+						"music"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "example-music",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/moods/6855631e3cc454400a2fbd1c/music",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"moods",
+								"6855631e3cc454400a2fbd1c",
+								"music"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "867"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"363-aZxMrB8TYkKm6+7xaEraM/D+b90\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 20 Jun 2025 13:51:32 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"mood\": \"sad\",\n    \"recommendations\": [\n        {\n            \"name\": \"Zakhm Dete Ho Kehte Ho Seete Raho\",\n            \"artist\": \"Mahbub Islam\",\n            \"url\": \"https://open.spotify.com/track/5bPTCA9whXbOqIhgf4gFcD\",\n            \"image\": \"https://i.scdn.co/image/ab67616d0000b273d17800968473b37372d9adea\",\n            \"preview\": null\n        },\n        {\n            \"name\": \"Sad Kids\",\n            \"artist\": \"Munn\",\n            \"url\": \"https://open.spotify.com/track/2g65wdbwr7cgdRuOLJlrE3\",\n            \"image\": \"https://i.scdn.co/image/ab67616d0000b273995233cb8863483edf49c3e7\",\n            \"preview\": null\n        },\n        {\n            \"name\": \"Perfect - Acoustic\",\n            \"artist\": \"Ed Sheeran\",\n            \"url\": \"https://open.spotify.com/track/5T6bJp3XgwT0IaCfKMxmAu\",\n            \"image\": \"https://i.scdn.co/image/ab67616d0000b273a629dbc92d4dcb0312b45fa2\",\n            \"preview\": null\n        },\n        {\n            \"name\": \"Dooriyaan - Acoustic\",\n            \"artist\": \"Aniket Raturi, KALAM INK\",\n            \"url\": \"https://open.spotify.com/track/0QU0zu74bobCpmlUkT42vn\",\n            \"image\": \"https://i.scdn.co/image/ab67616d0000b2733dc7f35c59a082fdf29800de\",\n            \"preview\": null\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "delete-mood",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/moods/6855650e3cc454400a2fbd20",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"moods",
+						"6855650e3cc454400a2fbd20"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "example-delete-mood",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/moods/6855650e3cc454400a2fbd20",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"moods",
+								"6855650e3cc454400a2fbd20"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "32"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"20-CgsuMTG0VOjZM+gSoDyEp25ZYuY\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 20 Jun 2025 13:53:58 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"message\": \"Mood entry deleted\"\n}"
+				}
+			]
+		},
+		{
+			"name": "update-past-mood",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"mood\": \"excited\",\r\n  \"note\": \"Updated note goes here!\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/moods/685565e03cc454400a2fbd22",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"moods",
+						"685565e03cc454400a2fbd22"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "example-mood-change",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"mood\": \"excited\",\r\n  \"note\": \"Updated note goes here!\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/api/moods/685565e03cc454400a2fbd22",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"moods",
+								"685565e03cc454400a2fbd22"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "126"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"7e-vJ5LV3B4PcGBCdquc8Ohm2htghU\""
+						},
+						{
+							"key": "Date",
+							"value": "Fri, 20 Jun 2025 13:58:39 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"_id\": \"685565e03cc454400a2fbd22\",\n    \"mood\": \"excited\",\n    \"note\": \"Updated note goes here!\",\n    \"date\": \"2025-06-20T13:45:04.107Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		}
+	]
+}
