@@ -7,10 +7,10 @@ on:
     branches: [main]
 
 jobs:
-  test:
+  api-test:
     runs-on: ubuntu-latest
     services:
-      mongo:
+      mongodb:
         image: mongo:latest
         ports:
           - 27017:27017
@@ -22,42 +22,59 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 18
 
-      - name: Install dependencies
+      - name: Install backend dependencies
         working-directory: ./backend
         run: npm install
 
-      - name: Start app in background
-        working-directory: ./backend
+      - name: Install Keploy CLI
         run: |
-          nohup node app.js > server.log 2>&1 &
-          sleep 25
+          curl --silent -L https://keploy.io/ent/install.sh | bash
+          keploy --version
+
+      - name: Run Keploy Test Suite
+        working-directory: ./backend
         env:
           PORT: 8000
           MONGO_URI: mongodb://localhost:27017/moodjournal
           SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
-
-      - name: Verify app is running
-        working-directory: ./backend
-        run: |
-          curl -f http://localhost:8000/api/moods || (cat server.log && exit 1)
-
-      - name: Install Keploy CLI
-        run: |
-          curl -L https://github.com/keploy/keploy/releases/latest/download/keploy_linux_amd64.tar.gz | tar xz
-          sudo mv keploy /usr/local/bin
-
-      - name: Run Keploy tests
-        env:
           KEPLOY_API_KEY: ${{ secrets.KEPLOY_API_KEY }}
+          APP: ${{ secrets.KEPLOY_APP_ID }}
+          BASE_PATH: http://localhost:8000
         run: |
-          keploy test --app-id ${{ secrets.KEPLOY_APP_ID }} \
-            --base-path http://localhost:8000 \
-            --cloud
+          # Start the app with proper logging
+          nohup node app.js > server.log 2>&1 &
+          SERVER_PID=$!
+          echo "Waiting for server to start..."
+          sleep 25
+          
+          # Verify app is running
+          if curl -sSf http://localhost:8000/api/moods; then
+            echo "✅ Server is running"
+            cat server.log
+          else
+            echo "❌ Server failed to start"
+            cat server.log
+            exit 1
+          fi
+          
+          # Run Keploy tests
+          keploy test-suite --app="$APP" --base-path="$BASE_PATH" --cloud
+          
+          # Clean up
+          kill $SERVER_PID || true
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: keploy-report
+          path: ./backend/keploy
+          retention-days: 30
