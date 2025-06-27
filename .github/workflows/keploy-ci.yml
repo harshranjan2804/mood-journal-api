@@ -29,7 +29,6 @@ jobs:
         with:
           node-version: 18
 
-      # Navigate to backend directory
       - name: Install dependencies
         working-directory: ./backend
         run: npm install
