@@ -29,16 +29,16 @@ jobs:
         with:
           node-version: 18
 
+      # Navigate to backend directory
       - name: Install dependencies
-        run: |
-          cd backend
-          npm install
+        working-directory: ./backend
+        run: npm install
 
       - name: Start app in background
+        working-directory: ./backend
         run: |
-          cd backend
           nohup node app.js > server.log 2>&1 &
-          sleep 15
+          sleep 25
         env:
           PORT: 8000
           MONGO_URI: mongodb://localhost:27017/moodjournal
@@ -46,8 +46,9 @@ jobs:
           SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
 
       - name: Verify app is running
+        working-directory: ./backend
         run: |
-          curl -f http://localhost:8000/api/moods || (cat backend/server.log && exit 1)
+          curl -f http://localhost:8000/api/moods || (cat server.log && exit 1)
 
       - name: Install Keploy CLI
         run: |
