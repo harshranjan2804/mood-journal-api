@@ -1,0 +1,63 @@
+name: Keploy API Testing
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      mongo:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+        options: >-
+          --health-cmd "echo 'db.runCommand(\"ping\").ok' | mongosh localhost:27017/test --quiet"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: |
+          cd backend
+          npm install
+
+      - name: Start app in background
+        run: |
+          cd backend
+          nohup node app.js > server.log 2>&1 &
+          sleep 15
+        env:
+          PORT: 8000
+          MONGO_URI: mongodb://localhost:27017/moodjournal
+          SPOTIFY_CLIENT_ID: ${{ secrets.SPOTIFY_CLIENT_ID }}
+          SPOTIFY_CLIENT_SECRET: ${{ secrets.SPOTIFY_CLIENT_SECRET }}
+
+      - name: Verify app is running
+        run: |
+          curl -f http://localhost:8000/api/moods || (cat backend/server.log && exit 1)
+
+      - name: Install Keploy CLI
+        run: |
+          curl -L https://github.com/keploy/keploy/releases/latest/download/keploy_linux_amd64.tar.gz | tar xz
+          sudo mv keploy /usr/local/bin
+
+      - name: Run Keploy tests
+        env:
+          KEPLOY_API_KEY: ${{ secrets.KEPLOY_API_KEY }}
+        run: |
+          keploy test --app-id ${{ secrets.KEPLOY_APP_ID }} \
+            --base-path http://localhost:8000 \
+            --cloud
